@@ -10,3 +10,4 @@ class Purchase(models.Model):
     person = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
     date = models.DateTimeField(auto_now_add=True)
+    price = models.PositiveIntegerField(default=0)

@@ -7,8 +7,31 @@
 <body>
     <div>
         <h3>Покупка</h3>
-        <form method="post">{% csrf_token %}
-            <input type="hidden" value="{{ view.kwargs.product_id }}" name="product" />
+        <form id = "promokods" method="post" action="/buy/">{% csrf_token %}
+            <input type="hidden" value="{{ product_ID }}" name="product_ID" />
+            <table> 
+                <tr>
+                    <td><p>Вы выбрали: </p></td>
+                    <td><p>{{ ProductsStr.name }}</p></td>
+                </tr>
+                <tr>
+                    <td><p>Цена: </p></td>
+                    <td><p> {{ ProductsStr.price}}</p></td>
+                </tr>
+            
+                <tr>
+                    <td><p>Введите промокод </p></td>
+                    <td><input type="text" name="promokod_new" /> </td>
+                 </tr>
+                 <tr><td><input type="submit", form ="promokods", value="Применить промокод" /> </td></tr>
+            </table>
+        </form>
+
+
+        <form id="purchase" method="post" action="/post_buy/">{% csrf_token %}
+            <input type="hidden" value="{{ product_ID }}" name="product_id" />
+            
+           
             <table>
                 <tr>
                     <td><p>Введите свое имя </p></td>
@@ -20,7 +43,13 @@
                         <input type="text" name="address" />
                     </td>
                 </tr>
-                <tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
+                <tr>
+                    <td><p>К оплате:</p></td>
+                    <td>
+                        <input type="number" readonly value="{{discount_price}}" name="price" />
+                    </td>
+                </tr>
+                <tr><td><input type="submit", form ="purchase", value="Отправить" /> </td><td></td></tr>
             </table>
         </form>
     </div>

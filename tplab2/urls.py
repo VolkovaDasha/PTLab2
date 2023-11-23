@@ -17,6 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('', include('shop.urls')),
+    path('', include('shop.urls')), #он отсекает любую часть URL-адреса, совпадающую до этого момента, и отправляет оставшуюся строку во включенный URLconf для дальнейшей обработки
     path('admin/', admin.site.urls),
 ]
